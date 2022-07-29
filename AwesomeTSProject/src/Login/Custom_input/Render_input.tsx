@@ -4,7 +4,7 @@ import {TextInput, View} from 'react-native';
 import {stylesRenderInput} from '../../Styles/Styles';
 
 export interface contenInput {
-  changeText?: (data: string) => void;
+  onChange: (data: any) => void;
   placeholderText: string;
   isSecureTextEntry?: boolean;
   isForcus?: boolean;
@@ -22,19 +22,21 @@ function RenderInput({
   maxLength,
   value,
   onBlur,
-  changeText,
+                       onChange,
   errorColor,
   keyboard,
   underlineColorAndroid
 }: contenInput) {
+  console.log('render')
   return (
     <View style={stylesRenderInput.wrapAll}>
       <View style={{position:'relative'}}>
         <TextInput
-            // underlineColorAndroid={errorColor}
             keyboardType={ keyboard && 'phone-pad' || 'name-phone-pad'}
-          onChangeText={changeText}
-          onLayout={onBlur}
+          onBlur={onBlur}
+          onChange={(e)=>{
+            onChange(e.nativeEvent.text)
+          }}
           value={value}
           maxLength={maxLength}
           placeholder={placeholderText}

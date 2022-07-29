@@ -16,6 +16,7 @@ function SignIn() {
     control,
     reset,
     handleSubmit,
+      trigger,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -48,7 +49,11 @@ function SignIn() {
                 placeholderText={"Email or Phone"}
                 isForcus={true}
                 maxLength={24}
-                changeText={onChange}
+                onBlur={()=>trigger('account')}
+                onChange={(data)=>{
+                    trigger('account')
+                    onChange(data)
+                }}
               />
                 <View>
                     <View style={(errors.account && {backgroundColor: 'red',height:1}) || {backgroundColor: '#ccc',height:1}}></View>
@@ -84,7 +89,11 @@ function SignIn() {
                 placeholderText={"Enter password here"}
                 isSecureTextEntry={true}
                 maxLength={24}
-                changeText={onChange}
+                onBlur={()=>trigger('password')}
+                onChange={(data)=>{
+                    trigger('password')
+                    onChange(data)
+                }}
               />
                 <View>
                     <View style={(errors.password && {backgroundColor: 'red',height:1}) || {backgroundColor: '#ccc',height:1}}></View>

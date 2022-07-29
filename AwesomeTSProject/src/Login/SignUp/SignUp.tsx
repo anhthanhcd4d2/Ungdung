@@ -19,17 +19,18 @@ function SignUp() {
     }, []);
     const onSummit = (data: object) => {
         console.log(data);
-        reset();
+        // reset();
     };
-    const checkAcount = (data: boolean) => {
-        console.log(2, data)
+    const checkAccount = (accountValue:string) => {
         setTimeout(() => {
-            setCheck(!data)
+            setCheck((check)=>!check)
         }, 3000)
+        console.log(accountValue)
     };
     const {
         control,
         reset,
+        trigger,
         handleSubmit,
         formState: {errors},
     } = useForm({
@@ -40,7 +41,6 @@ function SignUp() {
             confirm: '',
         },
     });
-    console.log(errors.password )
     return (
         <View style={styleSign.wrapAll}>
             <View style={styleSign.wrapBlock}>
@@ -66,7 +66,11 @@ function SignUp() {
                                 placeholderText={'Enter Email or phone '}
                                 isSecureTextEntry={false}
                                 maxLength={24}
-                                changeText={onChange}
+                                onBlur={()=>trigger('account')}
+                                onChange={(data)=>{
+                                    trigger('account')
+                                    onChange(data)
+                                }}
                             />
                             {value && (
                                 <View
@@ -85,9 +89,10 @@ function SignUp() {
                                     <Pressable
                                         onPressIn={() => {
                                             setCheck(!check)
-                                            checkAcount(!check)
+                                            checkAccount(value)
                                         }}>
                                         {check &&
+
                                             (<Text style={{color: 'rgb(255,255,255)'}}>check</Text>) ||
                                             (<Image style={{width: 50, height: 35}}
                                                     source={require('../image/Loading_icon.gif')}/>)
@@ -129,7 +134,11 @@ function SignUp() {
                                     placeholderText={'Enter password here'}
                                     isSecureTextEntry={true}
                                     maxLength={24}
-                                    changeText={onChange}
+                                    onBlur={()=>trigger('password')}
+                                    onChange={(data)=>{
+                                        trigger('password')
+                                        onChange(data)
+                                    }}
                                 />
                             </View>
                             <View>
@@ -167,7 +176,11 @@ function SignUp() {
                                 placeholderText={'Enter confirm password here'}
                                 isSecureTextEntry={true}
                                 maxLength={24}
-                                changeText={onChange}
+                                onBlur={()=>trigger('confirm')}
+                                onChange={(data)=>{
+                                    trigger('confirm')
+                                    onChange(data)
+                                }}
                             />
                             <View>
                                 <View style={(errors.confirm && {backgroundColor: 'red',height:1}) || {backgroundColor: '#ccc',height:1}}></View>
@@ -205,7 +218,11 @@ function SignUp() {
                                 placeholderText={'Enter Phone here'}
                                 isSecureTextEntry={false}
                                 maxLength={24}
-                                changeText={onChange}
+                                onBlur={()=>trigger('password')}
+                                onChange={(data)=>{
+                                    trigger('password')
+                                    onChange(data)
+                                }}
                             />
                             <View>
                                 <View style={(errors.phone && {backgroundColor: 'red',height:1}) || {backgroundColor: '#ccc',height:1}}></View>

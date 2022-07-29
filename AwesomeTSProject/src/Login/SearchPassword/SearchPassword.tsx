@@ -2,7 +2,7 @@ import React from "react";
 import { Text, View, TextInput, Button, Alert } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 
-export default function SearchPassword() {
+export default function App() {
     const { control, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
             firstName: '',
