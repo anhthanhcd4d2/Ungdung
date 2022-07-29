@@ -1,15 +1,16 @@
 import {Image, Pressable, Text, TouchableHighlight, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import RenderInput from '../Login/Custom_input/Render_input';
+import RenderInput from '../Custom_input/Render_input';
 import {useNavigation} from '@react-navigation/native';
 import {useForm, Controller} from 'react-hook-form';
 import axios from 'axios';
-import {styleSign} from '../Styles/Styles';
-import RenderBnt from '../Login/Custom_Bnt/Render_Bnt';
+import {styleSign} from '../../Styles/Styles';
+import RenderBnt from '../Custom_Bnt/Render_Bnt';
 
 const baseUrl = 'https://62db4eedd1d97b9e0c4e23b6.mockapi.io/product';
 
 function SignUp() {
+    console.log('render')
   const [check, setCheck] = useState<boolean>(true);
   const [data, setData] = useState<any>();
   useEffect(() => {
@@ -17,13 +18,15 @@ function SignUp() {
       setData(response);
     });
   }, []);
-  console.log(data);
   const onSummit = (data: object) => {
     console.log(data);
     reset();
   };
-  const checkAcount = () => {
-    setCheck(!check);
+  const checkAcount = (data:boolean) => {
+      console.log(2,data)
+      setTimeout(()=>{
+          setCheck(!data)
+      },3000)
   };
   const {
     control,
@@ -82,10 +85,13 @@ function SignUp() {
                     alignItems: 'center',
                     borderRadius: 5,
                   }}>
-                  <Pressable onPressIn={checkAcount}>
+                  <Pressable onPressIn={()=>{
+                      setCheck(!check)
+                      checkAcount(!check)
+                  }}>
                     {check &&
                       (<Text style={{color: 'rgb(255,255,255)'}}>check</Text>) ||
-                      (<Image style={{width: 50, height: 35}} source={require('../Login/image/Loading_icon.gif')}/>)
+                      (<Image style={{width: 50, height: 35}} source={require('../image/Loading_icon.gif')}/>)
                     }
                   </Pressable>
                 </View>

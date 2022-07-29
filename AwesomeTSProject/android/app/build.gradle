@@ -259,6 +259,9 @@ dependencies {
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
+    // For animated GIF support
+        implementation 'com.facebook.fresco:animated-gif:2.5.0'
+
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
