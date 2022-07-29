@@ -4,9 +4,6 @@ const stylesLogin = StyleSheet.create({});
 
 const stylesRenderInput = StyleSheet.create({
   wrapAll: {},
-  wrapEnd: {
-    height: 1,
-  },
 });
 const stylesRenderBnt = StyleSheet.create({
   textName: {

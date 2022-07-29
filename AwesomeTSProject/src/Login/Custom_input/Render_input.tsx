@@ -13,6 +13,7 @@ export interface contenInput {
   onBlur?: () => void;
   errorColor?:any
   keyboard?:boolean
+  underlineColorAndroid?:string
 }
 function RenderInput({
   placeholderText,
@@ -23,15 +24,17 @@ function RenderInput({
   onBlur,
   changeText,
   errorColor,
-  keyboard
+  keyboard,
+  underlineColorAndroid
 }: contenInput) {
   return (
     <View style={stylesRenderInput.wrapAll}>
       <View style={{position:'relative'}}>
         <TextInput
-          keyboardType={ keyboard && 'phone-pad' || 'name-phone-pad'}
+            // underlineColorAndroid={errorColor}
+            keyboardType={ keyboard && 'phone-pad' || 'name-phone-pad'}
           onChangeText={changeText}
-          onBlur={onBlur}
+          onLayout={onBlur}
           value={value}
           maxLength={maxLength}
           placeholder={placeholderText}
@@ -39,10 +42,7 @@ function RenderInput({
           autoFocus={isForcus}
         />
       </View>
-      <View style={{
-        ...stylesRenderInput.wrapEnd,
-        backgroundColor: errorColor
-      }}></View>
+
     </View>
   );
 }
