@@ -49,9 +49,14 @@ function SignIn() {
                 isForcus={true}
                 maxLength={24}
                 changeText={onChange}
-                errorColor={errors.password && 'red' || "#ccc"}
               />
-              {errors.account && <Text style={styleSign.errorMessage}>{errors.account.message}</Text>}
+                <View>
+                    <View style={(errors.account && {backgroundColor: 'red',height:1}) || {backgroundColor: '#ccc',height:1}}></View>
+                    {errors.account && (
+                        <Text style={styleSign.errorMessage}>
+                            {errors.account.message}
+                        </Text>)}
+                </View>
             </View>
           )}
         />
@@ -73,17 +78,21 @@ function SignIn() {
             },
           }}
           name={"password"}
-          render={({ field: { onChange, value } }) => (
+          render={({ field: { onChange } }) => (
             <View style={styleSign.wrapBlockView_Input}>
               <RenderInput
                 placeholderText={"Enter password here"}
                 isSecureTextEntry={true}
                 maxLength={24}
                 changeText={onChange}
-                value={value}
-                errorColor={errors.password && 'red' || "#ccc"}
               />
-              {errors.password && <Text style={styleSign.errorMessage}>{errors.password.message}</Text>}
+                <View>
+                    <View style={(errors.password && {backgroundColor: 'red',height:1}) || {backgroundColor: '#ccc',height:1}}></View>
+                    {errors.password && (
+                        <Text style={styleSign.errorMessage}>
+                            {errors.password.message}
+                        </Text>)}
+                </View>
             </View>
           )}
         />

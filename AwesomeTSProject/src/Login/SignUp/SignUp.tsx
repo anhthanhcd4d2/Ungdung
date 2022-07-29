@@ -10,7 +10,6 @@ import RenderBnt from '../Custom_Bnt/Render_Bnt';
 const baseUrl = 'https://62db4eedd1d97b9e0c4e23b6.mockapi.io/product';
 
 function SignUp() {
-    const [colorErrror,setColorError]= useState<any>()
     const [check, setCheck] = useState<boolean>(true);
     const [data, setData] = useState<any>();
     useEffect(() => {
@@ -68,11 +67,6 @@ function SignUp() {
                                 isSecureTextEntry={false}
                                 maxLength={24}
                                 changeText={onChange}
-                                value={value}
-                                onBlur={() => {
-                                    value && errors.account
-                                    console.log('a')
-                                }}
                             />
                             {value && (
                                 <View
@@ -128,7 +122,7 @@ function SignUp() {
                         },
                     }}
                     name={'password'}
-                    render={({field: {onChange, value}}) => (
+                    render={({field: {onChange}}) => (
                         <View style={styleSign.wrapBlockView_Input}>
                             <View>
                                 <RenderInput
@@ -136,8 +130,6 @@ function SignUp() {
                                     isSecureTextEntry={true}
                                     maxLength={24}
                                     changeText={onChange}
-                                    value={value}
-                                    errorColor={(errors.password && 'red') || '#ccc'}
                                 />
                             </View>
                             <View>
@@ -169,15 +161,13 @@ function SignUp() {
                         },
                     }}
                     name={'confirm'}
-                    render={({field: {onChange, value}}) => (
+                    render={({field: {onChange}}) => (
                         <View style={styleSign.wrapBlockView_Input}>
                             <RenderInput
                                 placeholderText={'Enter confirm password here'}
                                 isSecureTextEntry={true}
                                 maxLength={24}
                                 changeText={onChange}
-                                value={value}
-                                errorColor={(errors.password && 'red') || '#ccc'}
                             />
                             <View>
                                 <View style={(errors.confirm && {backgroundColor: 'red',height:1}) || {backgroundColor: '#ccc',height:1}}></View>
@@ -208,7 +198,7 @@ function SignUp() {
                         },
                     }}
                     name={'phone'}
-                    render={({field: {onChange, value}}) => (
+                    render={({field: {onChange}}) => (
                         <View style={styleSign.wrapBlockView_Input}>
                             <RenderInput
                                 keyboard={true}
@@ -216,8 +206,6 @@ function SignUp() {
                                 isSecureTextEntry={false}
                                 maxLength={24}
                                 changeText={onChange}
-                                value={value}
-                                errorColor={(errors.password && 'red') || '#ccc'}
                             />
                             <View>
                                 <View style={(errors.phone && {backgroundColor: 'red',height:1}) || {backgroundColor: '#ccc',height:1}}></View>
