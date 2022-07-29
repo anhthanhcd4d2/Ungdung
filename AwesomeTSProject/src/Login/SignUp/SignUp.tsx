@@ -1,4 +1,4 @@
-import {Image, Pressable, Text, TouchableHighlight, View} from 'react-native';
+import {Image, Pressable, ScrollView, Text, TouchableHighlight, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import RenderInput from '../Custom_input/Render_input';
 import {useNavigation} from '@react-navigation/native';
@@ -42,6 +42,7 @@ function SignUp() {
         },
     });
     return (
+        <ScrollView>
         <View style={styleSign.wrapAll}>
             <View style={styleSign.wrapBlock}>
                 <View style={styleSign.wrapBlockView_Text}>
@@ -63,9 +64,11 @@ function SignUp() {
                     render={({field: {onChange, value}}) => (
                         <View style={styleSign.wrapBlockView_Input}>
                             <RenderInput
+                                isForcus={true}
                                 placeholderText={'Enter Email or phone '}
                                 isSecureTextEntry={false}
                                 maxLength={24}
+                                value={value}
                                 onBlur={()=>trigger('account')}
                                 onChange={(data)=>{
                                     trigger('account')
@@ -109,7 +112,6 @@ function SignUp() {
                     )}
                 />
             </View>
-
             <View style={styleSign.wrapBlock}>
                 <View style={styleSign.wrapBlockView_Text}>
                     <Text style={styleSign.textStyle}>Password</Text>
@@ -127,13 +129,14 @@ function SignUp() {
                         },
                     }}
                     name={'password'}
-                    render={({field: {onChange}}) => (
+                    render={({field: {onChange,value}}) => (
                         <View style={styleSign.wrapBlockView_Input}>
                             <View>
                                 <RenderInput
                                     placeholderText={'Enter password here'}
                                     isSecureTextEntry={true}
                                     maxLength={24}
+                                    value={value}
                                     onBlur={()=>trigger('password')}
                                     onChange={(data)=>{
                                         trigger('password')
@@ -170,12 +173,13 @@ function SignUp() {
                         },
                     }}
                     name={'confirm'}
-                    render={({field: {onChange}}) => (
+                    render={({field: {onChange,value}}) => (
                         <View style={styleSign.wrapBlockView_Input}>
                             <RenderInput
                                 placeholderText={'Enter confirm password here'}
                                 isSecureTextEntry={true}
                                 maxLength={24}
+                                value={value}
                                 onBlur={()=>trigger('confirm')}
                                 onChange={(data)=>{
                                     trigger('confirm')
@@ -211,16 +215,17 @@ function SignUp() {
                         },
                     }}
                     name={'phone'}
-                    render={({field: {onChange}}) => (
+                    render={({field: {onChange,value}}) => (
                         <View style={styleSign.wrapBlockView_Input}>
                             <RenderInput
                                 keyboard={true}
                                 placeholderText={'Enter Phone here'}
                                 isSecureTextEntry={false}
                                 maxLength={24}
-                                onBlur={()=>trigger('password')}
+                                value={value}
+                                onBlur={()=>trigger('phone')}
                                 onChange={(data)=>{
-                                    trigger('password')
+                                    trigger('phone')
                                     onChange(data)
                                 }}
                             />
@@ -245,6 +250,7 @@ function SignUp() {
                 />
             </View>
         </View>
+        </ScrollView>
     );
 }
 

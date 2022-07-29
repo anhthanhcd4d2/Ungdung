@@ -9,7 +9,7 @@ export interface contenInput {
   isSecureTextEntry?: boolean;
   isForcus?: boolean;
   maxLength?: number | 1000;
-  value?: any;
+  value: string ;
   onBlur?: () => void;
   errorColor?:any
   keyboard?:boolean
@@ -20,24 +20,24 @@ function RenderInput({
   isSecureTextEntry,
   isForcus,
   maxLength,
-  value,
+  value=' ',
   onBlur,
-                       onChange,
+  onChange,
   errorColor,
   keyboard,
   underlineColorAndroid
 }: contenInput) {
-  console.log('render')
+
   return (
     <View style={stylesRenderInput.wrapAll}>
       <View style={{position:'relative'}}>
         <TextInput
             keyboardType={ keyboard && 'phone-pad' || 'name-phone-pad'}
-          onBlur={onBlur}
+          onEndEditing={onBlur}
           onChange={(e)=>{
             onChange(e.nativeEvent.text)
           }}
-          value={value}
+          value={value.replace(/[' ',`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/ ]/gi, '')}
           maxLength={maxLength}
           placeholder={placeholderText}
           secureTextEntry={isSecureTextEntry}

@@ -1,7 +1,7 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 
 const stylesLogin = StyleSheet.create({});
-
+const sceen= Dimensions.get('window')
 const stylesRenderInput = StyleSheet.create({
   wrapAll: {},
 });
@@ -14,12 +14,14 @@ const stylesRenderBnt = StyleSheet.create({
 });
 const styleSign = StyleSheet.create({
   wrapAll: {
+    height: sceen.height,
     flex: 1,
     paddingLeft: 30,
     paddingRight: 30,
     justifyContent: 'center',
     alignContent: 'center',
     backgroundColor: 'rgb(255,255,255)',
+
   },
   wrapBlock: {
     flexDirection: 'row',
