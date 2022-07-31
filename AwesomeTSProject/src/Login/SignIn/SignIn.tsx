@@ -46,9 +46,10 @@ function SignIn() {
           render={({ field: { onChange, value } }) => (
             <View style={styleSign.wrapBlockView_Input}>
               <RenderInput
+                  value={value}
                 placeholderText={"Email or Phone"}
                 isForcus={true}
-                maxLength={24}
+                maxLength={18}
                 onBlur={()=>trigger('account')}
                 onChange={(data)=>{
                     trigger('account')
@@ -83,12 +84,13 @@ function SignIn() {
             },
           }}
           name={"password"}
-          render={({ field: { onChange } }) => (
+          render={({ field: { onChange,value } }) => (
             <View style={styleSign.wrapBlockView_Input}>
               <RenderInput
                 placeholderText={"Enter password here"}
                 isSecureTextEntry={true}
-                maxLength={24}
+                maxLength={18}
+                value={value}
                 onBlur={()=>trigger('password')}
                 onChange={(data)=>{
                     trigger('password')

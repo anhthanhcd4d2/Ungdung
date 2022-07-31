@@ -1,4 +1,4 @@
-import {Image, Pressable, ScrollView, Text, TouchableHighlight, View} from 'react-native';
+import {Alert, Image, Pressable, ScrollView, Text, TouchableHighlight, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import RenderInput from '../Custom_input/Render_input';
 import {useNavigation} from '@react-navigation/native';
@@ -8,6 +8,9 @@ import {styleSign, stylesRenderInput} from '../../Styles/Styles';
 import RenderBnt from '../Custom_Bnt/Render_Bnt';
 
 const baseUrl = 'https://62db4eedd1d97b9e0c4e23b6.mockapi.io/product';
+const isCheckAccount = (item:any,value:string) => {
+    return item.account === value ?? true
+}
 
 function SignUp() {
     const [check, setCheck] = useState<boolean>(true);
@@ -19,13 +22,16 @@ function SignUp() {
     }, []);
     const onSummit = (data: object) => {
         console.log(data);
-        // reset();
     };
-    const checkAccount = (accountValue:string) => {
+    const checkAccount = (value:string) => {
+      let newData= data.data.find((a:any)=>{
+         return  isCheckAccount(a,value)
+      })
         setTimeout(() => {
+            newData? Alert.alert('error account not sign Up') : Alert.alert('successful thank')
             setCheck((check)=>!check)
         }, 3000)
-        console.log(accountValue)
+
     };
     const {
         control,
@@ -49,6 +55,7 @@ function SignUp() {
                     <Text style={styleSign.textStyle}>Acount</Text>
                 </View>
                 <Controller
+
                     control={control}
                     rules={{
                         required: {
@@ -58,7 +65,7 @@ function SignUp() {
                         minLength: {
                             value: 6,
                             message: 'nội dung chứa ít nhất 6 ký tự',
-                        },
+                        }
                     }}
                     name={'account'}
                     render={({field: {onChange, value}}) => (
@@ -67,8 +74,8 @@ function SignUp() {
                                 isForcus={true}
                                 placeholderText={'Enter Email or phone '}
                                 isSecureTextEntry={false}
-                                maxLength={24}
-                                value={value}
+                                maxLength={18}
+                                value={value.replace(/[,`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/ ]/gi, '')}
                                 onBlur={()=>trigger('account')}
                                 onChange={(data)=>{
                                     trigger('account')
@@ -91,8 +98,12 @@ function SignUp() {
                                     }}>
                                     <Pressable
                                         onPressIn={() => {
-                                            setCheck(!check)
-                                            checkAccount(value)
+                                            trigger('account').then((data)=>{
+                                                if (data){
+                                                    setCheck(!check)
+                                                    checkAccount(value)
+                                                }
+                                            })
                                         }}>
                                         {check &&
 
@@ -135,8 +146,8 @@ function SignUp() {
                                 <RenderInput
                                     placeholderText={'Enter password here'}
                                     isSecureTextEntry={true}
-                                    maxLength={24}
-                                    value={value}
+                                    maxLength={18}
+                                    value={value.replace(/[' ',`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/ ]/gi, '')}
                                     onBlur={()=>trigger('password')}
                                     onChange={(data)=>{
                                         trigger('password')
@@ -155,7 +166,6 @@ function SignUp() {
                     )}
                 />
             </View>
-
             <View style={styleSign.wrapBlock}>
                 <View style={styleSign.wrapBlockView_Text}>
                     <Text style={styleSign.textStyle}>confrim</Text>
@@ -178,8 +188,8 @@ function SignUp() {
                             <RenderInput
                                 placeholderText={'Enter confirm password here'}
                                 isSecureTextEntry={true}
-                                maxLength={24}
-                                value={value}
+                                maxLength={18}
+                                value={value.replace(/[' ',`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/ ]/gi, '')}
                                 onBlur={()=>trigger('confirm')}
                                 onChange={(data)=>{
                                     trigger('confirm')
@@ -221,8 +231,8 @@ function SignUp() {
                                 keyboard={true}
                                 placeholderText={'Enter Phone here'}
                                 isSecureTextEntry={false}
-                                maxLength={24}
-                                value={value}
+                                maxLength={18}
+                                value={value.replace(/[' ',`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/ ]/gi, '')}
                                 onBlur={()=>trigger('phone')}
                                 onChange={(data)=>{
                                     trigger('phone')

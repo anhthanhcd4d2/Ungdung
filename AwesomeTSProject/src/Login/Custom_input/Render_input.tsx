@@ -37,7 +37,7 @@ function RenderInput({
           onChange={(e)=>{
             onChange(e.nativeEvent.text)
           }}
-          value={value.replace(/[' ',`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/ ]/gi, '')}
+          value={value}
           maxLength={maxLength}
           placeholder={placeholderText}
           secureTextEntry={isSecureTextEntry}
