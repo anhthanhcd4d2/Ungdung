@@ -37,6 +37,7 @@ function RenderInput({
           onChange={(e)=>{
             onChange(e.nativeEvent.text)
           }}
+
           value={value}
           maxLength={maxLength}
           placeholder={placeholderText}
