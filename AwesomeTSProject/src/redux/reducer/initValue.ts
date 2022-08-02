@@ -1,6 +1,6 @@
 export const initUseLogin = {
     use: {
-        accction: '',
+        acccount: '',
         password: '',
         phone:'',
         data:[]

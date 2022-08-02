@@ -36,7 +36,7 @@ function Info() {
                     shadowRadius: 4,
                     elevation: 5
                 }}>
-                    <Text>Tài Khoản: {infoPeople.key.use.accction}</Text>
+                    <Text>Tài Khoản: {infoPeople.key.use.acccount}</Text>
                     <Text>Mật Khẩu: {infoPeople.key.use.password}</Text>
                     <Text>SDT: {infoPeople.key.use.phone}</Text>
                     <Pressable

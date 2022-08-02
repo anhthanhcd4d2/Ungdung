@@ -33,7 +33,6 @@ function SignIn() {
       setData(response);
     });
   }, []);
-  console.log(store.getState());
   const navigation = useNavigation<any>();
   const onSubmit = (data: any) => {
     let check = dataList.data.find((element: any) => {
