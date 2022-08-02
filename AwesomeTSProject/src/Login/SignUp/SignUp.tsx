@@ -24,7 +24,7 @@ const schema = yup
       .string()
       .required('Mục Không để trống')
       .min(6, 'It nhất 6 ký tự')
-      .max(12, 'Độ dài  từ 6-12 '),
+      .max(18, 'Độ dài  từ 6-12 '),
     password: yup
       .string()
       .required('Mục Không để trống')

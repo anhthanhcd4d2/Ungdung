@@ -1,11 +1,6 @@
 import {combineReducers} from 'redux';
+import {initUseLogin} from "./initValue";
 
-export const initUseLogin = {
-  use: {
-    accction: '',
-    password: '',
-  },
-};
 
 import {SIGN_IN} from '../acction/actions';
 

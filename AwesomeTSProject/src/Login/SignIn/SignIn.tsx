@@ -39,6 +39,7 @@ function SignIn() {
     let check = dataList.data.find((element: any) => {
       return element.acccount === data.account && element.password === data.password;
     });
+      console.log(check)
     if (check) {
       disPatch(loginUse(check));
       navigation.navigate("home");

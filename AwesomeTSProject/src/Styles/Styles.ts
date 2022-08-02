@@ -74,4 +74,10 @@ const styleSign = StyleSheet.create({
     textAlign: 'center',
   },
 });
-export {stylesRenderInput, stylesLogin, stylesRenderBnt, styleSign};
+const styleHome = StyleSheet.create({
+  infoIcon: {
+    width: 30,
+    height :30,
+  },
+});
+export {stylesRenderInput, stylesLogin, stylesRenderBnt, styleSign,styleHome};

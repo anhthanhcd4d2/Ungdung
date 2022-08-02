@@ -1,0 +1,13 @@
+import {Text, View} from "react-native";
+import React from "react";
+
+function Messeger() {
+    return (
+        <View>
+            <Text>
+                 Không Có Data
+            </Text>
+        </View>
+    )
+}
+export default Messeger
