@@ -9,25 +9,26 @@ export interface contenInput {
   isSecureTextEntry?: boolean;
   isForcus?: boolean;
   maxLength?: number | 1000;
-  value: string ;
+  value:string ;
   onBlur?: () => void;
   errorColor?:any
   keyboard?:boolean
   underlineColorAndroid?:string
 }
+
+const setValue= `/[,\`~!@#$%^&*()_|+\\-=?;:'",.<>\\{\\}\\[\\]\\\\\\/ ]/gi`
 function RenderInput({
   placeholderText,
   isSecureTextEntry,
   isForcus,
   maxLength,
-  value=' ',
+  value,
   onBlur,
   onChange,
   errorColor,
   keyboard,
   underlineColorAndroid
 }: contenInput) {
-
   return (
     <View style={stylesRenderInput.wrapAll}>
       <View style={{position:'relative'}}>
@@ -37,15 +38,13 @@ function RenderInput({
           onChange={(e)=>{
             onChange(e.nativeEvent.text)
           }}
-
-          value={value}
+          value={value.replace(/[ ]/gi,'')}
           maxLength={maxLength}
           placeholder={placeholderText}
           secureTextEntry={isSecureTextEntry}
           autoFocus={isForcus}
         />
       </View>
-
     </View>
   );
 }

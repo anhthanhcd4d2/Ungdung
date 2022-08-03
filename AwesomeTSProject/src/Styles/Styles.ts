@@ -16,8 +16,8 @@ const styleSign = StyleSheet.create({
   wrapAll: {
     height: sceen.height,
     flex: 1,
-    paddingLeft: 30,
-    paddingRight: 30,
+    paddingLeft: 5,
+    paddingRight: 5,
     justifyContent: 'center',
     alignContent: 'center',
     backgroundColor: 'rgb(255,255,255)',
@@ -54,7 +54,7 @@ const styleSign = StyleSheet.create({
     color: 'red',
   },
   textStyle: {
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: 'bold',
     color: 'rgba(0,0,0,0.7--- )',
   },
@@ -68,6 +68,18 @@ const styleSign = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  checkAccount:{
+    position: 'absolute',
+    right: 0,
+    top: 10,
+    zIndex: 1,
+    width: 50,
+    height: 35,
+    backgroundColor: '#266C99',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+  },
   wrapBlockView_twoBnts_stylesName: {
     fontWeight: '400',
     color: 'rgb(0.0.0)',
@@ -79,5 +91,42 @@ const styleHome = StyleSheet.create({
     width: 30,
     height :30,
   },
+
 });
-export {stylesRenderInput, stylesLogin, stylesRenderBnt, styleSign,styleHome};
+const styleInfo = StyleSheet.create({
+  wrapAll:{
+    flex: 1,
+    alignItems: 'center',
+  },
+  wrapConten:{
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  blockConten:{
+    backgroundColor: "white",
+    borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 35,
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  blockPressable:{
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row'
+  },
+  textPressable:{
+    padding: 10,
+    marginTop: 10,
+    backgroundColor: 'rgb(22,117,156)',
+    borderRadius: 5,
+    color: 'black',
+    margin: 5,
+  }
+
+
+})
+export {stylesRenderInput, stylesLogin, stylesRenderBnt, styleSign,styleHome,styleInfo};

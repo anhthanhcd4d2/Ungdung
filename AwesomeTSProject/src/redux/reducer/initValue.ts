@@ -3,6 +3,7 @@ export const initUseLogin = {
         acccount: '',
         password: '',
         phone:'',
-        data:[]
+        date:'',
+        emai:'',
     },
 };

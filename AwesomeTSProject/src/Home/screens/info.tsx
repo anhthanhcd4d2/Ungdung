@@ -4,65 +4,43 @@ import {useNavigation} from "@react-navigation/native";
 
 
 import store from "../../redux/store";
+import {styleInfo} from "../../Styles/Styles";
 
 function Info() {
     const [isModal, setModal] = useState(false)
     const infoPeople = store.getState()
     return (
-        <View style={{
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-        }}>
+        <View style={styleInfo.wrapAll}>
             <Modal
                 visible={isModal}
                 transparent={true}
-                animationType={'fade'}
-            >
-                <View style={{
-                    flex: 1,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-
-                } }>
-
-                <View style={{
-                    backgroundColor: "white",
-                    borderRadius: 20,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    padding:35,
-                    shadowOpacity: 0.25,
-                    shadowRadius: 4,
-                    elevation: 5
-                }}>
-                    <Text>Tài Khoản: {infoPeople.key.use.acccount}</Text>
-                    <Text>Mật Khẩu: {infoPeople.key.use.password}</Text>
-                    <Text>SDT: {infoPeople.key.use.phone}</Text>
-                    <Pressable
-                        onPress={() => {
-                            setModal(!isModal)
-                        }}
-                    >
-                        <Text style={{
-                            padding:10,
-                            marginTop:10,
-                            backgroundColor:'rgb(22,117,156)',
-                            borderRadius:5,
-                            color:'black'
-                        }}>
-                            Show info
-                        </Text>
-                    </Pressable>
-                </View>
+                animationType={'fade'}>
+                <View style={styleInfo.wrapConten}>
+                    <View style={styleInfo.blockConten}>
+                        <Text>Tài Khoản: {infoPeople.key.use.acccount}</Text>
+                        <Text>Mật Khẩu: {infoPeople.key.use.password}</Text>
+                        <Text>SDT: {infoPeople.key.use.phone}</Text>
+                        <View style={styleInfo.blockPressable}>
+                            <Pressable
+                                onPress={() => {
+                                    setModal(!isModal)
+                                }}>
+                                <Text style={styleInfo.textPressable}>Exit</Text>
+                            </Pressable>
+                            <Pressable
+                                onPress={() => {
+                                    setModal(!isModal)
+                                }}>
+                                <Text style={styleInfo.textPressable}>Edit account</Text>
+                            </Pressable>
+                        </View>
+                    </View>
                 </View>
             </Modal>
             <Pressable
-
                 onPress={() => {
                     setModal(!isModal)
-                }}
-            >
+                }}>
                 <Text>
                     Show info
                 </Text>
